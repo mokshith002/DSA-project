@@ -2,7 +2,8 @@
 
 using namespace std;
 
-struct course{
+struct course
+{
     string courseCode;
     string section;
     string instructor;
@@ -10,45 +11,48 @@ struct course{
     vector<string> days;
     int credits;
 };
+map<string, set<string>> courseSections;
 
-map<string, course> findCourses(string year){
-    if(year == "2021")
+map<string, course> findCourses(string year)
+{
+    if (year == "2021")
         freopen("first_courses.txt", "r", stdin);
-    if(year == "2020")
+    if (year == "2020")
         freopen("second_courses.txt", "r", stdin);
-    if(year == "2019")
+    if (year == "2019")
         freopen("third_courses.txt", "r", stdin);
-    if(year == "2018")
+    if (year == "2018")
         freopen("fourth_courses.txt", "r", stdin);
-
 
     int n;
     cin >> n;
 
     map<string, course> result;
 
-    for(int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++)
+    {
         string courseCode;
         string section;
         string instructor;
         pair<int, int> timing;
-        vector <string> days;
+        vector<string> days;
         string classCode;
         int credits;
 
         cin >> classCode >> courseCode >> section >> instructor >> timing.first >> timing.second;
-        int d; cin >> d;
-        for(int i = 0; i < d; i++){
-            string day; cin >> day;
+        int d;
+        cin >> d;
+        for (int i = 0; i < d; i++)
+        {
+            string day;
+            cin >> day;
             days.push_back(day);
         }
         cin >> credits;
 
-        result[classCode] = { courseCode , section , instructor , timing, days, credits};
+        courseSections[courseCode].insert(section.substr(0, 1));
+        result[classCode] = {courseCode, section, instructor, timing, days, credits};
     }
 
     return result;
 }
-
-
-
