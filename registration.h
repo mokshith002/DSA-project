@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include <chrono>
+#include <thread>
 #include "courses.h"
 
 using namespace std;
@@ -79,7 +81,7 @@ void displayCourses(string code = "all")
             continue;
         cout << endl;
         cout << setw(7) << crs.first;
-        cout << setw(10) << c.courseCode << endl;
+        cout << setw(10) << c.courseCode;
         cout << setw(10) << c.credits;
         cout << setw(10) << c.section;
         cout << setw(15) << c.instructor;
@@ -97,11 +99,13 @@ void displayCourses(string code = "all")
 
 void registration(string year)
 {
+    cout << "Registration starts with year: " << year << endl;
     courses = findCourses(year);
     displayCourses();
     bool flag = true;
     while (flag)
     {
+        // std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::seconds(1));
         cout << "1. View all courses" << endl
              << "2. Search by course code" << endl
              << "3. Enter class code to add to cart" << endl
@@ -110,6 +114,7 @@ void registration(string year)
              << "Enter you choice - ";
         int choice;
         cin >> choice;
+        cout << "Choice is " << choice << endl;
         string class_code, code;
         switch (choice)
         {

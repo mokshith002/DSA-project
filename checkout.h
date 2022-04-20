@@ -75,7 +75,7 @@ bool displayCart()
         course c = courses[code];
         cout << endl;
         cout << setw(7) << code;
-        cout << setw(10) << c.courseCode << endl;
+        cout << setw(10) << c.courseCode;
         cout << setw(10) << c.credits;
         cout << setw(10) << c.section;
         cout << setw(15) << c.instructor;
