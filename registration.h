@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 #include "courses.h"
-#include "login.h"
-#include "checkout.h"
 
 using namespace std;
 
@@ -59,9 +57,8 @@ void removeFromCart(string class_code)
             currentSections.erase(c.courseCode);
         }
     }
-    F
-            cout
-        << "Successfully deleted " + class_code << endl;
+
+    cout << "Successfully deleted " + class_code << endl;
 }
 
 void displayCourses(string code = "all")
@@ -105,15 +102,15 @@ void registration(string year)
     bool flag = true;
     while (flag)
     {
-        cout << "1. View all courses\n"
-             << "2. Search by course code\n"
-             << "3. Enter class code to add to cart\n"
-             << "4. Enter class code to remove from cart\n"
-             << "5. View cart\n"
+        cout << "1. View all courses" << endl
+             << "2. Search by course code" << endl
+             << "3. Enter class code to add to cart" << endl
+             << "4. Enter class code to remove from cart" << endl
+             << "5. View cart" << endl
              << "Enter you choice - ";
         int choice;
         cin >> choice;
-        string class_code;
+        string class_code, code;
         switch (choice)
         {
         case 1:
@@ -135,11 +132,7 @@ void registration(string year)
             removeFromCart(class_code);
             break;
         case 5:
-            if (displayCart())
-            {
-                flag = false;
-                break;
-            }
+            return;
         default:
             cout << "Invalid choice!\n";
             break;
