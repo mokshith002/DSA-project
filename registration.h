@@ -23,7 +23,12 @@ vector<set<cartItem>> cart(DAYS);
 map<string, set<string>> currentSections;
 
 void addToCart(string class_code)
-{
+{   
+    if(!courses.count(class_code)){
+        cout << "Course with class code " + class_code + " does not exist\n";
+        return;
+    }
+
     course c = courses[class_code];
     string sectionType = c.section.substr(0, 1);
     if (currentSections.count(c.courseCode) and
@@ -38,11 +43,17 @@ void addToCart(string class_code)
     {
         cart[dayIndex[d]].insert({c.timing, class_code});
     }
-    cout << "Successfully inserted " + class_code << endl;
+    cout << "Successfully inserted " + c.courseCode + " " + c.section << endl;
 }
 
 void removeFromCart(string class_code)
 {
+    if (!courses.count(class_code))
+    {
+        cout << "Course with class code " + class_code + " does not exist\n";
+        return;
+    }
+
     course c = courses[class_code];
     for (auto d : c.days)
     {
@@ -60,7 +71,7 @@ void removeFromCart(string class_code)
         }
     }
 
-    cout << "Successfully deleted " + class_code << endl;
+    cout << "Successfully deleted " + c.courseCode + " " + c.section << endl;
 }
 
 void displayCourses(string code = "all")
@@ -99,14 +110,13 @@ void displayCourses(string code = "all")
 
 void registration(string year)
 {
-    cout << "Registration starts with year: " << year << endl;
     courses = findCourses(year);
     displayCourses();
     bool flag = true;
     while (flag)
     {
         // std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::seconds(1));
-        cout << "1. View all courses" << endl
+        cout << "\n\n\n1. View all courses" << endl
              << "2. Search by course code" << endl
              << "3. Enter class code to add to cart" << endl
              << "4. Enter class code to remove from cart" << endl

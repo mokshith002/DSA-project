@@ -30,13 +30,14 @@ bool checkout()
             {
                 seen.insert(it->classCode);
                 totalCreds += courses[it->classCode].credits;
-                if (totalCreds > MAX_CREDITS)
-                {
-                    cout << "Total credits exceed maximum limit\n";
-                    return false;
-                }
             }
         }
+    }
+
+    if (totalCreds > MAX_CREDITS)
+    {
+        cout << "Total credits (" << totalCreds << ")exceed maximum limit (" << MAX_CREDITS << ")\n";
+        return false;
     }
 
     for (auto [courseCode, sections] : currentSections)
