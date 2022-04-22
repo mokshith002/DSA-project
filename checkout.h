@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include "courses.h"
 #include "registration.h"
 
 using namespace std;
@@ -8,6 +7,7 @@ const int MAX_CREDITS = 25;
 bool checkout()
 {
     int totalCreds = 0;
+    set<string> seen;
 
     for (int i = 0; i < DAYS; ++i)
     {
@@ -18,19 +18,23 @@ bool checkout()
             nxt++;
             if (nxt != cart[i].end())
             {
-                if (*nxt.timing.first <= *it.timing.second)
+                if (nxt->timing.first <= it->timing.second)
                 {
-                    cout << *it.classCode << " clashes with " << *nxt.classCode << "\n";
+                    cout << it->classCode << " clashes with " << nxt->classCode << "\n";
                     return false;
                 }
             }
 
             // Check for maximum credits exceeded
-            totalCreds += *it.classCode.credits;
-            if (totalCreds > MAX_CREDITS)
+            if (!seen.count(it->classCode))
             {
-                cout << "Total credits exceed maximum limit\n";
-                return false;
+                seen.insert(it->classCode);
+                totalCreds += courses[it->classCode].credits;
+                if (totalCreds > MAX_CREDITS)
+                {
+                    cout << "Total credits exceed maximum limit\n";
+                    return false;
+                }
             }
         }
     }
@@ -71,7 +75,7 @@ bool displayCart()
         course c = courses[code];
         cout << endl;
         cout << setw(7) << code;
-        cout << setw(10) << c.courseCode << endl;
+        cout << setw(10) << c.courseCode;
         cout << setw(10) << c.credits;
         cout << setw(10) << c.section;
         cout << setw(15) << c.instructor;

@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
+#include <chrono>
+#include <thread>
 #include "courses.h"
-#include "login.h"
-#include "checkout.h"
 
 using namespace std;
 
@@ -59,9 +59,8 @@ void removeFromCart(string class_code)
             currentSections.erase(c.courseCode);
         }
     }
-    F
-            cout
-        << "Successfully deleted " + class_code << endl;
+
+    cout << "Successfully deleted " + class_code << endl;
 }
 
 void displayCourses(string code = "all")
@@ -82,7 +81,7 @@ void displayCourses(string code = "all")
             continue;
         cout << endl;
         cout << setw(7) << crs.first;
-        cout << setw(10) << c.courseCode << endl;
+        cout << setw(10) << c.courseCode;
         cout << setw(10) << c.credits;
         cout << setw(10) << c.section;
         cout << setw(15) << c.instructor;
@@ -100,20 +99,23 @@ void displayCourses(string code = "all")
 
 void registration(string year)
 {
+    cout << "Registration starts with year: " << year << endl;
     courses = findCourses(year);
     displayCourses();
     bool flag = true;
     while (flag)
     {
-        cout << "1. View all courses\n"
-             << "2. Search by course code\n"
-             << "3. Enter class code to add to cart\n"
-             << "4. Enter class code to remove from cart\n"
-             << "5. View cart\n"
+        // std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::seconds(1));
+        cout << "1. View all courses" << endl
+             << "2. Search by course code" << endl
+             << "3. Enter class code to add to cart" << endl
+             << "4. Enter class code to remove from cart" << endl
+             << "5. View cart" << endl
              << "Enter you choice - ";
         int choice;
         cin >> choice;
-        string class_code;
+        cout << "Choice is " << choice << endl;
+        string class_code, code;
         switch (choice)
         {
         case 1:
@@ -135,11 +137,7 @@ void registration(string year)
             removeFromCart(class_code);
             break;
         case 5:
-            if (displayCart())
-            {
-                flag = false;
-                break;
-            }
+            return;
         default:
             cout << "Invalid choice!\n";
             break;
