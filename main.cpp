@@ -2,11 +2,13 @@
 #include "login.h"
 #include "checkout.h"
 
+
 using namespace std;
 
 int main(){
 
-    string year = "2020";
+    string user = login();
+    string year = user.substr(1, 4);
     registration(year);
     while (!displayCart()) {
         registration(year);

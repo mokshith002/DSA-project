@@ -101,7 +101,6 @@ void registration(string year)
 {
     cout << "Registration starts with year: " << year << endl;
     courses = findCourses(year);
-    map<string, course> _courses = courses;
     displayCourses();
     bool flag = true;
     while (flag)

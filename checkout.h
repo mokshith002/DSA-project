@@ -18,7 +18,7 @@ bool checkout()
             nxt++;
             if (nxt != cart[i].end())
             {
-                if (nxt->timing.first <= it->timing.second)
+                if (nxt->timing.first < it->timing.second)
                 {
                     cout << it->classCode << " clashes with " << nxt->classCode << "\n";
                     return false;

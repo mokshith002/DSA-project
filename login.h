@@ -2,7 +2,12 @@
 
 using namespace std;
 
-map<string, string> users;
+map<string, string> users = {
+    {"f20210001", "pass1"},
+    {"f20200001", "pass2"},
+    {"f20190001", "pass3"},
+    {"f20180001", "pass4"}
+};
 
 bool userRegister(string username, string password)
 {
@@ -40,7 +45,7 @@ string login()
         cout << "\n";
         cout << "1. Register\n"
              << "2. Login\n"
-             << "Enter your choice -";
+             << "Enter your choice - ";
         int choice;
         cin >> choice;
         if (choice != 1 and choice != 2)

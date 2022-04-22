@@ -2,18 +2,6 @@
 
 using namespace std;
 
-// struct course
-// {
-//     string courseCode;
-//     string section;
-//     string instructor;
-//     pair<int, int> timing;
-//     vector<string> days;
-//     int credits;
-// };
-
-
-    // first_year.insert{courseCode, {"CSF211", "L1", "C Hota", {2, 3}, {"T", "Th", "S"}, 4}}
 
 string daysFormat(vector<string> days, int n){
     string ret = "{";
