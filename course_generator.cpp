@@ -29,9 +29,7 @@ string daysFormat(vector<string> days, int n){
 
 void generateCourses(){
 
-    string name = ("fourth_year");
-
-    freopen("fourth_courses.txt", "r", stdin);
+    freopen("./Courses_text/fourth_courses.txt", "r", stdin);
     
     int n;
     cin >> n;
