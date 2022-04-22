@@ -66,7 +66,7 @@ bool displayCart()
          << setw(10) << "Credits"
          << setw(10) << "Section"
          << setw(15) << "Instructor"
-         << setw(10) << "Days"
+         << setw(10) << "Days  "
          << setw(7) << "Start"
          << setw(5) << "End\n";
 

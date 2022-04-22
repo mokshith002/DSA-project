@@ -5,9 +5,8 @@
 using namespace std;
 
 int main(){
-    // string user = login();
-    // string year = user.substr(1, 4);
-    string year = "2021";
+
+    string year = "2020";
     registration(year);
     while (!displayCart()) {
         registration(year);
